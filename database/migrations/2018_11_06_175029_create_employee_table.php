@@ -21,7 +21,8 @@ class CreateEmployeeTable extends Migration
             $table->string('ln_link');
             $table->string('fb_link');
             $table->string('tw_link');
-            $table->string('g+_link');
+            $table->string('g_link');
+            $table->timestamps();
         });
     }
 

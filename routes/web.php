@@ -12,7 +12,21 @@
 */
 
 Route::get('/', ['as' => 'main', 'uses' => 'NewsController@index']);
+
 Route::get('/about', ['as' => 'about', 'uses' => 'EmployeeController@index']);
+
+Route::get('/portfolio', ['as' => 'portfolio', 'uses' => 'NewsController@portfolio']);
+
+Route::get('/blog', ['as' => 'blog', 'uses' => 'NewsController@blog']);
+
+Route::post('blog', ['as' => 'blog', 'uses' => 'NewsController@search']);
+
+Route::get('/category/{category}', ['as' => 'category', 'uses' => 'NewsController@blog']);
+
+Route::get('/contacts', ['as' => 'contacts', 'uses' => 'ContactController@index']);
+
+Route::post('/contacts', ['as' => 'contacts', 'uses' => 'ContactController@validateMessage']);
+
 
 Route::get('/post/{id}', ['as' => 'post', 'uses' => 'NewsController@showSinglePost']);
 
@@ -25,4 +39,18 @@ Auth::routes();
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\MyAuthController@showLoginForm']);
 Route::post('/login', ['as' => 'login', 'uses' => 'Auth\MyAuthController@authenticate']);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group([
+    'prefix'     => 'admin',
+    'middleware' => [
+        'web',
+        'auth',
+        'admin',
+    ],
+], function() {
+
+    Route::get('/', 'Admin\AdminNewsController@index');
+    Route::resource('/news', 'Admin\AdminNewsController');
+    Route::resource('/comments', 'Admin\AdminCommentsController');
+
+});
+

@@ -20,7 +20,15 @@ class CategoryTableSeeder extends Seeder
             [
                 'category_uri' => 'it',
                 'category_name' => 'Информационные технологии',
-            ]
+            ],
+            [
+                'category_uri' => 'culture',
+                'category_name' => 'Культура',
+            ],
+            [
+                'category_uri' => 'politics',
+                'category_name' => 'Политика',
+            ],
         ];
 
         foreach ($categories as $category) {

@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+
+@include('includes.partners')
+
 @section('banner')
     <div class="home-banner dark">
 
@@ -164,11 +167,11 @@
                     @foreach($topNews as $item)
                         <li class="column-one-fourth portfolio-item branding">
                             <!-- Image -->
-                            <a href="post/{{ $item->id }}" class="image-link">
-                                <img alt="" src="images\placeholders\{{ $item->img_name }}" class="fullwidth">
+                            <a href="{{ route('post', ['id' => $item->id]) }}" class="image-link">
+                                <img alt="" src="{{ asset($item->img_name) }}" class="fullwidth">
                             </a>
                             <!-- Title -->
-                            <h3><a href="post/{{ $item->id }}">{{ $item->title }}</a></h3>
+                            <h3><a href="{{ route('post', ['id' => $item->id]) }}">{{ $item->title }}</a></h3>
                             <!-- Tags -->
                             <div class="tags">{{ $item->category_name }}</div>
                         </li>
@@ -192,18 +195,18 @@
 
                                 <li class="column-one-fourth">
                                     <!-- Image -->
-                                    <a href="post/{{ $item->id }}" class="image-link"><img alt=""
-                                                                                           src="images\placeholders\{{ $item->img_name }}"
+                                    <a href="{{ route('post', ['id' => $item->id]) }}" class="image-link"><img alt=""
+                                                                                           src="{{ asset($item->img_name) }}"
                                                                                            class="fullwidth">
                                     </a>
                                     <!-- Title -->
-                                    <h3><a href="post/{{ $item->id }}">{{ $item->title }}</a></h3>
+                                    <h3><a href="{{ route('post', ['id' => $item->id]) }}">{{ $item->title }}</a></h3>
                                     <!-- Date -->
                                     <div class="date">{{ $item->created_at }}</div>
                                     <!-- Excerpt -->
                                     <p>{{ $item->sort_content }}</p>
                                     <!-- Read More Link -->
-                                    <a href="post/{{ $item->id }}">Подробнее</a>
+                                    <a href="{{ route('post', ['id' => $item->id]) }}">Подробнее</a>
                                 </li>
 
                             @endforeach
@@ -243,7 +246,7 @@
                                         </div>
                                         <!-- Company URL -->
                                         <div class="testimonial-link">
-                                            <a href="post/{{ $comment->news_id }}">Посетитель</a>
+                                            <a href="{{ route('post', ['id' => $comment->news_id]) }}">Посетитель</a>
                                         </div>
                                     </li>
 

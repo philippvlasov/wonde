@@ -2602,7 +2602,7 @@ i {
 	float: left;
 	margin-right: 9px;
 }
-.contact-form input:nth-child(3n+3) {
+.contact-form input:nth-child(4) {
 	margin-right: 0;
 }
 .contact-form input[type="submit"] {
@@ -3474,4 +3474,12 @@ i {
 		width: 100%;
 		margin-right: 0;
 	}
+}
+
+.pagination {
+	display: flex;
+}
+
+.pagination li {
+	padding: 0 10px;
 }
